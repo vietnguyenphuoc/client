@@ -1,20 +1,15 @@
 import { Nav } from "react-bootstrap";
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 const Admin = () => {
   return (
     <>
-      <Nav variant="tabs" defaultActiveKey="/home" className="mt-3">
+      <Nav variant="tabs" className="mt-3">
         <Nav.Item>
-          <Nav.Link eventKey="/product">Active</Nav.Link>
+          <Nav.Link as={NavLink} to="product" className={({ isActive }) => isActive? "active": ''}>Products</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="/unauthorized">Option 2</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="disabled" disabled>
-            Disabled
-          </Nav.Link>
+          <Nav.Link as={NavLink} to="unauthorized" className={({ isActive }) => isActive? "active": ''}>Authorizing</Nav.Link>
         </Nav.Item>
       </Nav>
       <Outlet />

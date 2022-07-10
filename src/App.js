@@ -9,6 +9,8 @@ import Cart from "./components/Cart";
 import Admin from "./components/Admin";
 import Products from "./components/Products";
 import Authorizing from "./components/Authorizing";
+import Listproduct from "./components/Listproduct";
+import Editproduct from "./components/Editproduct";
 
 function App() {
   return (
@@ -21,11 +23,13 @@ function App() {
           <Route path="shop" element={<Shop />} />
           <Route path="cart" element={<Cart />} />
           <Route path="admin" element={<Admin />}>
-            <Route path="product" element={<Products />} />
+            <Route path="product" element={<Products />}>
+              <Route path="edit" element={<Editproduct />} />
+              <Route path="list" element={<Listproduct />} />
+            </Route>
             <Route path="unauthorized" element={<Authorizing />} />
           </Route>
         </Routes>
-        
       </Container>
     </>
   );
