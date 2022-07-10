@@ -1,5 +1,6 @@
 import Container from "react-bootstrap/Container";
 import { Routes, Route, Outlet } from "react-router-dom";
+import * as Icon from "react-bootstrap-icons";
 import "./App.css";
 import Home from "./components/Home";
 import Menu from "./components/Menu";

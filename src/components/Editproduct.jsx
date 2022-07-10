@@ -2,8 +2,7 @@ import { Button, Card, Col, Form, Image, Row } from "react-bootstrap";
 
 const Editproduct = () => {
   return (
-    <>
-      <Card>
+      <Card className="mx-3 mt-3">
         <Card.Header>Product edition</Card.Header>
         <Card.Body>
           <Form className="mt-4">
@@ -55,7 +54,6 @@ const Editproduct = () => {
           <Button variant="outline-warning">Warning</Button>{" "}
         </Card.Footer>
       </Card>
-    </>
   );
 };
 
