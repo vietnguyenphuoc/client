@@ -1,19 +1,16 @@
 import { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import * as Icon from "react-bootstrap-icons";
-const Productdetail = ({ product, idx, products, setProducts }) => {
-  const [products1, setProducts2] = useState([]);
+import { Link } from "react-router-dom";
+const Productdetail = ({ product, idx, deleteProduct }) => {
+  // const [products1, setProducts2] = useState([]);
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const deleteProduct = (id) => {
-    setProducts2(products);
-    // setProducts(products1.filter((element) => element.id !== id));
-    handleClose();
-  };
 
   return (
     <>
@@ -27,7 +24,9 @@ const Productdetail = ({ product, idx, products, setProducts }) => {
       <td>{product.available ? "Yes" : "No"}</td>
       <td className="text-center">
         <Button variant="link">
-          <Icon.PencilSquare size={30} />
+          <Link to={`/admin/product/edit/${product.id}`}>
+            <Icon.PencilSquare size={30} />
+          </Link>
         </Button>
         <Button variant="link" onClick={handleShow}>
           <Icon.XCircle size={30} className="text-danger" />
@@ -42,9 +41,9 @@ const Productdetail = ({ product, idx, products, setProducts }) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="danger" onClick={handleClose}>
+          <Button variant="danger" onClick={() => deleteProduct(product.id)}>
             Delete
-          </Button>
+          </Button>    
         </Modal.Footer>
       </Modal>
     </>

@@ -1,12 +1,24 @@
 import { useEffect, useState } from "react";
-import { Button, Card, Modal, Table } from "react-bootstrap";
+import { Button, Card, Modal, Spinner, Table } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
+import { ToastContainer, toast } from "react-toastify";
 import ProductService from "../services/ProductService";
 import Productdetail from "./Productdetail";
 
 const Listproduct = () => {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState(null);
+
+  const notify = () =>
+    toast.success("🦄 Wow so easy!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
 
   useEffect(() => {
     // const fetchData = async () => {
@@ -29,11 +41,14 @@ const Listproduct = () => {
     fetchData().catch((err) => console.log());
   }, []);
 
-
+  const deleteProduct = (id) => {
+    setProducts(products.filter((element) => element.id !== id));
+    notify()
+  };
 
   return (
     <Card className="mx-3 mt-3  ">
-      <Card.Header>Product edition</Card.Header>
+      <Card.Header>Product edition </Card.Header>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -48,18 +63,46 @@ const Listproduct = () => {
             <th></th>
           </tr>
         </thead>
+        {loading && (
+          <tbody>
+            <tr>
+              <th colSpan={9}>
+                <Spinner
+                  animation="border"
+                  className="offset-5"
+                  variant="info"
+                />
+              </th>
+            </tr>
+          </tbody>
+        )}
         {!loading && products && (
           <tbody>
             {products.map((element, idx) => (
               <tr key={element.id}>
-                <Productdetail products setProducts product={element} idx={idx}/>
+                <Productdetail
+                  deleteProduct={deleteProduct}
+                  products={products}
+                  setProducts={setProducts}
+                  product={element}
+                  idx={idx}
+                />
               </tr>
             ))}
-            
           </tbody>
         )}
       </Table>
-      
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Card.Footer className="text-center">
         <Button variant="outline-primary">Primary</Button>{" "}
         <Button variant="outline-secondary">Secondary</Button>{" "}
