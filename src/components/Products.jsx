@@ -8,7 +8,7 @@ const Products = () => {
         <Nav.Item>
           <Nav.Link
             as={NavLink}
-            to="edit"
+            to="add"
             className="text-dark"
           >
             Product edition

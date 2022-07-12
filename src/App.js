@@ -25,8 +25,8 @@ function App() {
           <Route path="cart" element={<Cart />} />
           <Route path="admin" element={<Admin />}>
             <Route path="product" element={<Products />}>
+              <Route path="add" element={<Editproduct />} />
               <Route path="edit/:id" element={<Editproduct />} />
-              <Route path="edit" element={<Editproduct />} />
               <Route path="list" element={<Listproduct />} />
             </Route>
             <Route path="unauthorized" element={<Authorizing />} />

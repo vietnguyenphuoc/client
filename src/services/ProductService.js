@@ -6,7 +6,10 @@ class ProductService{
   getProducts() {
     return axios.get(api_url);
   }
-  
+
+  getOneProduct(id) {
+    return axios.get(api_url + '/'+id);
+  }
 }
 
 export default new ProductService();
