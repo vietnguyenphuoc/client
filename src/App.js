@@ -12,6 +12,7 @@ import Products from "./components/Products";
 import Authorizing from "./components/Authorizing";
 import Listproduct from "./components/Listproduct";
 import Editproduct from "./components/Editproduct";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           </Route>
         </Routes>
       </Container>
+      <Footer/>
     </>
   );
 }
