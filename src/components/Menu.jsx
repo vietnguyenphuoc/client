@@ -1,4 +1,4 @@
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Form, InputGroup, Nav, Navbar } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import { NavLink } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
@@ -7,7 +7,7 @@ const Menu = () => {
     <>
       <Navbar bg="info" variant="dark" expand="lg">
         <Container>
-          <Navbar.Brand as={NavLink} to="/">
+          <Navbar.Brand as={NavLink} to="/" className="me-5">
             <h2>
               <b>Shopping Cart</b>
             </h2>
@@ -15,29 +15,43 @@ const Menu = () => {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
-              className="me-auto my-2 my-lg-0 offset-4"
+              className="me-auto my-2 my-lg-0"
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link as={NavLink} to="/" className={({ isActive }) => isActive? "active": ''}>
-                Home
+              <Nav.Link
+                as={NavLink}
+                to="/"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                <b>Home</b>
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/shop" className={({ isActive }) => isActive? "active": ''}>
-                Shop
+              <Nav.Link
+                as={NavLink}
+                to="/shop"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                <b>Shop</b>
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/admin" className={({ isActive }) => isActive? "active": ''}>
-                Administration
+              <Nav.Link
+                as={NavLink}
+                to="/admin"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                <b>Administration</b>
               </Nav.Link>
             </Nav>
             <Nav className="d-flex">
-              <Dropdown>
-                {/* <Dropdown.Toggle variant="link">
-              <Icon.Search className="text-light"size={30} />
-            </Dropdown.Toggle> */}
-                <Dropdown.Menu variant="link">
-                  <input type="text" />
-                </Dropdown.Menu>
-              </Dropdown>
+            <Form>
+              <InputGroup size="sm" className="mt-1">
+                <Form.Control
+                placeholder="Tìm kiếm sản phẩm.."
+                />
+                <Button variant="outline-secondary">
+                <Icon.Search size={25} />
+                </Button>
+              </InputGroup>
+            </Form>
               <Nav.Link as={NavLink} to="/cart">
                 <Icon.Cart className="text-light" size={30} />
                 <span className="badge bg-light text-dark ms-1 rounded-pill">

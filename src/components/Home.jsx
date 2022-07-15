@@ -4,7 +4,7 @@ import Image from "react-bootstrap/Image";
 const Home = () => {
   return (
     <>
-      <Row className="mt-3">
+      <Row className="mt-3" style={{height: "610px"}}>
         
         <Col>
           <Image className="mt-5"
@@ -26,7 +26,7 @@ const Home = () => {
               COVID-19 pandemic is over, experts have said
             </p>
           </div>
-          <Button className="mx-3 mt-5" size="lg" variant="outline-info">Get Shopping</Button>
+          <Button className="mx-3 mt-5" size="lg" variant="info">Get Shopping</Button>
           <Button className="mt-5" variant="outline-info" size="lg">Login</Button>
         </Col>
       </Row>

@@ -22,7 +22,7 @@ const Editproduct = () => {
   }
 
   return (
-    <Card className="mx-3 mt-3">
+    <Card className="mt-3">
       <Card.Header>Product edition</Card.Header>
       <Card.Body>
         <Form className="mt-4">

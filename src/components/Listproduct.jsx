@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Card, Modal, Spinner, Table } from "react-bootstrap";
+import { Button, Card, Modal, Pagination, Spinner, Table } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
@@ -49,7 +49,7 @@ const Listproduct = () => {
 
   return (
     <>
-      <Card className="mx-3 mt-3  ">
+      <Card className="mt-3">
         <Card.Header>Product edition </Card.Header>
         <Table striped bordered hover>
           <thead>
@@ -105,13 +105,23 @@ const Listproduct = () => {
           draggable
           pauseOnHover
         />
-        <Card.Footer className="text-center">
-          <Button variant="outline-primary">Primary</Button>{" "}
-          <Button variant="outline-secondary">Secondary</Button>{" "}
-          <Button variant="outline-success">Success</Button>{" "}
-          <Button variant="outline-warning">Warning</Button>{" "}
-          <Button variant="outline-warning">Warning</Button>{" "}
-        </Card.Footer>
+        <Pagination className="offset-3">
+          <Pagination.First />
+          <Pagination.Prev />
+          <Pagination.Item>{1}</Pagination.Item>
+          <Pagination.Ellipsis />
+
+          <Pagination.Item>{10}</Pagination.Item>
+          <Pagination.Item>{11}</Pagination.Item>
+          <Pagination.Item active>{12}</Pagination.Item>
+          <Pagination.Item>{13}</Pagination.Item>
+          <Pagination.Item disabled>{14}</Pagination.Item>
+
+          <Pagination.Ellipsis />
+          <Pagination.Item>{20}</Pagination.Item>
+          <Pagination.Next />
+          <Pagination.Last />
+        </Pagination>
       </Card>
     </>
   );
