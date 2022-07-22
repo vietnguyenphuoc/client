@@ -42,8 +42,8 @@ const Menu = () => {
               </Nav.Link>
             </Nav>
             <Nav className="d-flex">
-            <Form>
-              <InputGroup size="sm" className="mt-1">
+            <Form className="me-4">
+              <InputGroup size="sm" className="mt-1 me-5">
                 <Form.Control
                 placeholder="Tìm kiếm sản phẩm.."
                 />

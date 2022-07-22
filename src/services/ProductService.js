@@ -7,6 +7,10 @@ class ProductService{
     return axios.get(api_url);
   }
 
+  getPages(name,page,size) {
+    return axios.get(api_url+'/views?name='+name+'&page='+page+'&size='+size);
+  }
+
   getOneProduct(id) {
     return axios.get(api_url + '/'+id);
   }
