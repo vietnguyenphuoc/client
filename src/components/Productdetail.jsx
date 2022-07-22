@@ -1,53 +1,32 @@
-import { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import * as Icon from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
-const Productdetail = ({ product, idx, deleteProduct }) => {
-  // const [products1, setProducts2] = useState([]);
-
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+import { Button, Card, Col, NavLink, Row } from "react-bootstrap";
+import Image from 'react-bootstrap/Image'
+const ProducDetail = () => {
   return (
     <>
-      <th>{idx + 1}</th>
-      <td>{product.id}</td>
-      <td>{product.name}</td>
-      <td>{product.price}</td>
-      <td>{product.createDate}</td>
-      <td>{product.image}</td>
-      <td>{product.category.name}</td>
-      <td>{product.available ? "Yes" : "No"}</td>
-      <td className="text-center">
-        <Button variant="link">
-          <Link to={`/admin/product/edit/${product.id}`}>
-            <Icon.PencilSquare size={30} />
-          </Link>
-        </Button>
-        <Button variant="link" onClick={handleShow}>
-          <Icon.XCircle size={30} className="text-danger" />
-        </Button>
-      </td>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Delete product</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Do you want to delete this product?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="danger" onClick={() => deleteProduct(product.id)}>
-            Delete
-          </Button>    
-        </Modal.Footer>
-      </Modal>
+      <Card className="mt-5" style={{ minHeight: "550px" }}>
+        <Card.Body>
+          <Row>
+            <Col xs={5}>
+              <Image
+                fluid
+                style={{marginTop: "70px"}}
+                className="d-flex justify-content-center"
+                src="https://static.remove.bg/remove-bg-web/5c20d2ecc9ddb1b6c85540a333ec65e2c616dbbd/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png"
+              />
+            </Col>
+            <Col>
+              <Card.Title style={{marginTop: "70px"}}>Special title treatment</Card.Title>
+              <Card.Text>
+                With supporting text below as a natural lead-in to additional
+                content.
+              </Card.Text>
+              <Button variant="primary">Go somewhere</Button>
+            </Col>
+          </Row>
+        </Card.Body>
+      </Card>
     </>
   );
 };
 
-export default Productdetail;
+export default ProducDetail;

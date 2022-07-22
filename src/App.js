@@ -13,29 +13,33 @@ import Authorizing from "./components/Authorizing";
 import Listproduct from "./components/Listproduct";
 import Editproduct from "./components/Editproduct";
 import Footer from "./components/Footer";
+import ProducDetail from "./components/Productdetail";
 
 function App() {
   return (
     <>
       <Menu />
       <Container>
-        <Routes>
-          <Route path="" element={<Home />} />
-          <Route path="login" element={<Login />} />
-          <Route path="shop" element={<Shop />} />
-          {/* <Route path={`shop?page=${1}`} element={<Shop />} /> */}
-          <Route path="cart" element={<Cart />} />
-          <Route path="admin" element={<Admin />}>
-            <Route path="product" element={<Products />}>
-              <Route path="add" element={<Editproduct />} />
-              <Route path="edit/:id" element={<Editproduct />} />
-              <Route path="list" element={<Listproduct />} />
+        <div style={{minHeight: "550px"}}>
+          <Routes>
+            <Route path="" element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="shop" element={<Shop />} />
+            {/* <Route path={`shop?page=${1}`} element={<Shop />} /> */}
+            <Route path="cart" element={<Cart />} />
+            <Route path="detail/:id" element={<ProducDetail />} />
+            <Route path="admin" element={<Admin />}>
+              <Route path="product" element={<Products />}>
+                <Route path="add" element={<Editproduct />} />
+                <Route path="edit/:id" element={<Editproduct />} />
+                <Route path="list" element={<Listproduct />} />
+              </Route>
+              <Route path="unauthorized" element={<Authorizing />} />
             </Route>
-            <Route path="unauthorized" element={<Authorizing />} />
-          </Route>
-        </Routes>
+          </Routes>
+        </div>
       </Container>
-      <Footer/>
+      <Footer />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import { Card, Col, Pagination, Row } from "react-bootstrap";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Button, Card, Col, NavLink, Pagination, Row } from "react-bootstrap";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import ProductService from "../services/ProductService";
 import Breadcrumbs from "./Breadcrumbs";
 import Paginate from "./Paginate";
@@ -28,7 +28,7 @@ const Shop = (props) => {
       if (currentPage) {
         const response = loadData(currentPage);
         return response;
-      }else{
+      } else {
         const response = loadData();
         return response;
       }
@@ -42,9 +42,9 @@ const Shop = (props) => {
   }, [currentPage]);
 
   const handleChangePage = (p) => {
-    navigatee('?page='+(p-1))
+    navigatee("?page=" + (p - 1));
     // console.log(currentPage);
-  }
+  };
 
   return (
     <>
@@ -53,19 +53,24 @@ const Shop = (props) => {
       <Row xs={2} md={3} className="g-4">
         {resultPage.map((element, idx) => (
           <Col key={element.id}>
-            <Card>
-              <Card.Img
-                variant="top"
-                src="https://static.remove.bg/remove-bg-web/5c20d2ecc9ddb1b6c85540a333ec65e2c616dbbd/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png"
-              />
-              <Card.Body>
-                <Card.Title>{element.name}</Card.Title>
-                <Card.Text>
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </Card.Text>
-              </Card.Body>
+            <Card className="justify-content-center">
+              <Link to={`/detail/${element.id}`}>
+                <Card.Img
+                  variant="top"
+                  src="https://static.remove.bg/remove-bg-web/5c20d2ecc9ddb1b6c85540a333ec65e2c616dbbd/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png"
+                />
+                <Card.Body>
+                  <Card.Title>{element.name}</Card.Title>
+                  <Card.Text>
+                    This is a longer card with supporting text below as a
+                    natural lead-in to additional content. This content is a
+                    little bit longer.
+                  </Card.Text>
+                </Card.Body>
+              </Link>
+              <Card.Footer className="text-center">
+                <Button variant="info" size="lg">Add cart</Button>
+              </Card.Footer>
             </Card>
           </Col>
         ))}
@@ -88,7 +93,11 @@ const Shop = (props) => {
           </Col>
         ))}      */}
       </Row>
-      <Paginate totalPage={totalPage} currentPage={currentPage} onChangePage={handleChangePage}/>
+      <Paginate
+        totalPage={totalPage}
+        currentPage={currentPage}
+        onChangePage={handleChangePage}
+      />
     </>
   );
 };

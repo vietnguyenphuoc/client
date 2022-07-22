@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Modal, Pagination, Spinner, Table } from "react-bootstrap";
-import * as Icon from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import { addProducts, getProducts } from "../redux/products/productSlice";
 import ProductService from "../services/ProductService";
 import Paginate from "./Paginate";
-import Productdetail from "./Productdetail";
+import RowProductdetail from "./RowProductdetail";
 
 const Listproduct = () => {
   const [loading, setLoading] = useState(true);
@@ -83,7 +82,7 @@ const Listproduct = () => {
             <tbody>
               {products.map((element, idx) => (
                 <tr key={element.id}>
-                  <Productdetail
+                  <RowProductdetail
                     deleteProduct={deleteProduct}
                     products={products}
                     setProducts={setProducts}
