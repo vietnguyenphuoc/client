@@ -1,4 +1,4 @@
-import { Button, Container, Form, InputGroup, Nav, Navbar } from "react-bootstrap";
+import { Badge, Button, Container, Form, InputGroup, Nav, Navbar } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import { NavLink } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
@@ -54,9 +54,9 @@ const Menu = () => {
             </Form>
               <Nav.Link as={NavLink} to="/cart">
                 <Icon.Cart className="text-light" size={30} />
-                <span className="badge bg-light text-dark ms-1 rounded-pill">
-                  5
-                </span>
+                <Badge bg="light" className="text-dark" pill>
+                  14
+              </Badge>
               </Nav.Link>
               <Dropdown>
                 <Dropdown.Toggle variant="link">

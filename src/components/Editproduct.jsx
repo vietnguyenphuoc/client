@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Card, Col, Form, Image, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import ProductService from "../services/ProductService";
@@ -12,14 +12,16 @@ const Editproduct = () => {
 
   const { id } = useParams();
 
-  if ( id ) {
+  useEffect(() => {
     const getOneP = async () => {
       const response = await ProductService.getOneProduct(id);
       setName(response.data.name);
       setPrice(response.data.price);
+      console.log(response.data.price);
     };
     getOneP()
-  }
+  },[id])
+
 
   return (
     <Card className="mt-3">

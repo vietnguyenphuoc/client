@@ -1,30 +1,54 @@
-import { Button, Card, Col, NavLink, Row } from "react-bootstrap";
-import Image from 'react-bootstrap/Image'
+import { useEffect, useState } from "react";
+import { Button, Card, Col, ListGroup, NavLink, Row } from "react-bootstrap";
+import Image from "react-bootstrap/Image";
+import { useParams } from "react-router-dom";
+import ProductService from "../services/ProductService";
 const ProducDetail = () => {
+  const [product, setProduct] = useState();
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    const getOneP = async () => {
+      const response = await ProductService.getOneProduct(id);
+      setProduct(response.data);
+      console.log(product);
+    };
+    getOneP();
+  }, [id]);
   return (
     <>
-      <Card className="mt-5" style={{ minHeight: "550px" }}>
+      {
+        product && <Card className="mt-5" style={{ minHeight: "550px" }}>
         <Card.Body>
           <Row>
-            <Col xs={5}>
+            <Col xs={7}>
               <Image
                 fluid
-                style={{marginTop: "70px"}}
-                className="d-flex justify-content-center"
-                src="https://static.remove.bg/remove-bg-web/5c20d2ecc9ddb1b6c85540a333ec65e2c616dbbd/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png"
+                style={{ marginTop: "70px",marginLeft: "120px" }}
+                src={`http://localhost:8080/files/fffffff/${product.image}`}
               />
             </Col>
-            <Col>
-              <Card.Title style={{marginTop: "70px"}}>Special title treatment</Card.Title>
-              <Card.Text>
-                With supporting text below as a natural lead-in to additional
-                content.
-              </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
+            <Col style={{ marginTop: "150px", marginLeft: "70px" }}>
+              <Card.Title>
+                {product.name}
+              </Card.Title>
+              {/* <Card.Text>
+                ${product && product.price}
+              </Card.Text> */}
+              <ListGroup>
+                <ListGroup.Item className="border-0">○ Price: <u>${product.price}</u></ListGroup.Item>
+                <ListGroup.Item className="border-0">○ Date created: {product.createDate}</ListGroup.Item>
+                <ListGroup.Item className="border-0">○ Category: {product.category.name}</ListGroup.Item>
+              </ListGroup>
+              <Button variant="primary">Buy</Button>{" "}
+              <Button variant="primary">Add cart</Button>
             </Col>
           </Row>
         </Card.Body>
       </Card>
+      }
+      
     </>
   );
 };
