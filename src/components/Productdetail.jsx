@@ -19,7 +19,7 @@ const ProducDetail = () => {
   return (
     <>
       {
-        product && <Card className="mt-5" style={{ minHeight: "550px" }}>
+        product && <Card className="mt-4 mb-4" style={{ minHeight: "550px" }}>
         <Card.Body>
           <Row>
             <Col xs={7}>
