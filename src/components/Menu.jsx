@@ -44,7 +44,7 @@ const Menu = () => {
             <Nav className="d-flex">
             <Form className="me-4">
               <InputGroup size="sm" className="mt-1 me-5">
-                <Form.Control
+                <Form.Control style={{minWidth : "300px"}}
                 placeholder="Tìm kiếm sản phẩm.."
                 />
                 <Button variant="outline-secondary">

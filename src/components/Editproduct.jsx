@@ -13,15 +13,15 @@ const Editproduct = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    const getOneP = async () => {
-      const response = await ProductService.getOneProduct(id);
-      setName(response.data.name);
-      setPrice(response.data.price);
-      console.log(response.data.price);
-    };
-    getOneP()
-  },[id])
-
+    if (id) {
+      const getOneP = async () => {
+        const response = await ProductService.getOneProduct(id);
+        setName(response.data.name);
+        setPrice(response.data.price);
+      };
+      getOneP();
+    }
+  }, [id]);
 
   return (
     <Card className="mt-3">

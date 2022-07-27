@@ -52,7 +52,7 @@ const Listproduct = () => {
       <Card className="mt-3">
         <Card.Header>Product edition </Card.Header>
         <Table striped bordered hover>
-          <thead>
+          <thead align="center">
             <tr>
               <th>#</th>
               <th>ID</th>
@@ -79,7 +79,7 @@ const Listproduct = () => {
             </tbody>
           )}
           {!loading && products && (
-            <tbody>
+            <tbody align="center">
               {products.map((element, idx) => (
                 <tr key={element.id}>
                   <RowProductdetail

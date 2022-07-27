@@ -12,7 +12,6 @@ const ProducDetail = () => {
     const getOneP = async () => {
       const response = await ProductService.getOneProduct(id);
       setProduct(response.data);
-      console.log(product);
     };
     getOneP();
   }, [id]);

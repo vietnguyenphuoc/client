@@ -64,13 +64,13 @@ const Shop = (props) => {
 
 const CardItem = (props) => {
   return (
-    <Col>
+    <Col xs={12} md={4}>
       <Card className="justify-content-md-center">
         <Link to={`/detail/${props.product.id}`}>
           <Card.Img
            style={{ height: '25rem' }}
             variant="top"
-            fluid
+            fluid="true"
             src={`http://localhost:8080/files/fffffff/${props.product.image}`}
           />
           <Card.Body className="text-center">

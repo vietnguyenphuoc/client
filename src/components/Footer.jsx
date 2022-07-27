@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <>
       <Dropdown.Divider />
-      <footer bg="info" className="text-center text-lg-left m-4">
+      <footer className="text-center text-lg-left m-4">
         <div className="text-center">
           &copy; {new Date().getFullYear()} Copyright:{" "}
           <a className="text-dark" href="https://bootstrap.com/">

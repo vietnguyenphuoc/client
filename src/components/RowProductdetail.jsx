@@ -22,7 +22,7 @@ const RowProductdetail = ({ product, idx, deleteProduct }) => {
       <td>{product.image}</td>
       <td>{product.category.name}</td>
       <td>{product.available ? "Yes" : "No"}</td>
-      <td className="text-center">
+      <td>
         <Button variant="link">
           <Link to={`/admin/product/edit/${product.id}`}>
             <Icon.PencilSquare size={30} />

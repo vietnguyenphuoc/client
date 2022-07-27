@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { InputGroup, Table } from "react-bootstrap";
+import { InputGroup, Spinner, Table } from "react-bootstrap";
 import authorities from "../services/Authorities";
 
 const Authorizing = () => {
@@ -20,6 +20,7 @@ const Authorizing = () => {
       setDataAuthorities(res.data);
       // console.log(res.data.roles[0]);
       // console.log(dataAuthorities.roles[0]);
+      // console.log(dataAuthorities);
       setLoading(false);
     });
     fetchData().catch((err) => console.log(err));
@@ -28,110 +29,42 @@ const Authorizing = () => {
   return (
     <>
       <h1 className="mx-3">Authorizing</h1>
-      <Table striped bordered hover className="justify-content-center">
-        <thead>
-          <tr>
-            <th></th>
-            {dataAuthorities && 
-              dataAuthorities.map &&
-              dataAuthorities.array.forEach((element,idx) => {
-                console.log(dataAuthorities.roles[1])
-              })}
-            
-            {/* {dataAuthorities &&
-              dataAuthorities.map &&
-              dataAuthorities.array.forEach((element,idx) => {
-                (<th>{element.roles[idx]}</th>)
-              })}
-            {/* <th>ADMIN</th>
+      <div className="table-responsive">
+        <Table striped bordered hover className="justify-content-center">
+          <thead align="center">
+            <tr>
+              <th></th>
+              {dataAuthorities &&
+                dataAuthorities.roles.map((element, idx) => (
+                  <th key={element.id}>{element.name}</th>
+                ))}
+              {/* <th>ADMIN</th>
             <th>GUEST</th>
-            <th>User</th> */} 
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>user1</td>
-            <td>
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-            </td>
-            <td>
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-            </td>
-            <td>
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>user2</td>
-            <td>
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-            </td>
-            <td>
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-            </td>
-            <td>
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>user3</td>
-            <td>
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-            </td>
-            <td>
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-            </td>
-            <td>
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-            </td>
-          </tr>
-        </tbody>
-      </Table>
+            <th>User</th> */}
+            </tr>
+          </thead>
+          <tbody align="center">
+            {dataAuthorities ? (
+              dataAuthorities.accounts.map((element) => (
+                <tr key={element.username}>
+                  <th>{element.username}</th>
+                  {dataAuthorities.roles.map(() => (
+                    <th>
+                      <input className="form-check-input" type="checkbox" />
+                    </th>
+                  ))}
+                </tr>
+              ))
+            ) : (
+              <tr align="center">
+                <th colSpan={4}>
+                  <Spinner animation="border" variant="info" />
+                </th>
+              </tr>
+            )}
+          </tbody>
+        </Table>
+      </div>
     </>
   );
 };

@@ -4,17 +4,17 @@ import Image from "react-bootstrap/Image";
 const Home = () => {
   return (
     <>
-      <Row className="mt-3" style={{height: "610px"}}>
+      <Row className="mt-5">
         
-        <Col>
-          <Image className="mt-5"
+        <Col xs md={6}>
+          <Image
             width={"500px"}
             src="https://cdn.pixabay.com/photo/2015/12/23/01/14/edit-1105049_960_720.png"
             fluid
           />
         </Col>
-        <Col>
-          <div className="justify-content-center mt-5">
+        <Col xs={12} md={6}>
+          <div className="justify-content-center">
             <h1 className="display-5 mt-5">
                 <b>
                     XIN CHAO
