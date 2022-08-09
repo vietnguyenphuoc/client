@@ -15,7 +15,7 @@ const Paginate = ({ totalPage, currentPage, onChangePage }) => {
   return (
     <>
       {/* {console.log(roundingPaginate+ 'aaaaaaa')} */}
-      <Pagination className="offset-4 mt-4">
+      <Pagination className="justify-content-center mt-4">
         {/* <Pagination.First />     */}
         { currentPage > 0 && <Pagination.Prev onClick={() => onChangePage(Number(currentPage))}/>}
         

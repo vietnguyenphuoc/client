@@ -21,7 +21,8 @@ const ProducDetail = () => {
         product && <Card className="mt-4 mb-4" style={{ minHeight: "550px" }}>
         <Card.Body>
           <Row>
-            <Col xs={7}>
+            <Col xs={7}
+              className="d-flex justify-content-center">
               <Image
                 fluid
                 style={{ marginTop: "70px",marginLeft: "120px" }}

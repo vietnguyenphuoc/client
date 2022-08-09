@@ -48,8 +48,8 @@ const Authorizing = () => {
               dataAuthorities.accounts.map((element) => (
                 <tr key={element.username}>
                   <th>{element.username}</th>
-                  {dataAuthorities.roles.map(() => (
-                    <th>
+                  {dataAuthorities.roles.map((element2) => (
+                    <th key={element2.id}>
                       <input className="form-check-input" type="checkbox" />
                     </th>
                   ))}

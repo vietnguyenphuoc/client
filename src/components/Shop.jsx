@@ -68,7 +68,7 @@ const CardItem = (props) => {
       <Card className="justify-content-md-center">
         <Link to={`/detail/${props.product.id}`}>
           <Card.Img
-           style={{ height: '25rem' }}
+           style={{ height: '24rem' }}
             variant="top"
             fluid="true"
             src={`http://localhost:8080/files/fffffff/${props.product.image}`}

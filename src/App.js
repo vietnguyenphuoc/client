@@ -20,7 +20,7 @@ function App() {
     <>
       <Menu />
       <Container>
-        <div style={{minHeight: "550px"}}>
+        <div style={{minHeight: "590px"}}>
           <Routes>
             <Route path="" element={<Home />} />
             <Route path="login" element={<Login />} />
