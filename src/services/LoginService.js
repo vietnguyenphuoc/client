@@ -3,11 +3,9 @@ import axios from "axios";
 const api_url = "http://localhost:8080/login" 
 
 class LoginService{
-
-  getOneProduct(loginForm) {
-    return axios.post(api_url, loginForm);
+  async loginUser(user) {
+    return await axios.post(api_url, user);
   }
-
 }
 
 export default new LoginService();

@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import { InputGroup, Spinner, Table } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import authorities from "../services/Authorities";
+
 
 const Authorizing = () => {
   const [loading, setLoading] = useState(true);
   const [dataAuthorities, setDataAuthorities] = useState();
+
+  const user = useSelector((state) => state.auth.login.currentUser);
+
   const loadData = async () => {
-    const response = authorities.getData();
+    const response = authorities.getData(user.token);
     return response;
   };
 
@@ -16,8 +21,10 @@ const Authorizing = () => {
       const response = loadData();
       return response;
     }
-    fetchData().then((res) => {
-      setDataAuthorities(res.data);
+     fetchData().then((res) => {
+      if (res != null) {
+        setDataAuthorities(res.data);
+      }
       // console.log(res.data.roles[0]);
       // console.log(dataAuthorities.roles[0]);
       // console.log(dataAuthorities);

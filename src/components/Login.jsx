@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { Button, Col, Dropdown, Form, Row } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { loginSuccess } from "../redux/auth/authSlice";
+import LoginService from "../services/LoginService";
 
 const Login = () => {
   const navigatee = useNavigate();
+  const dispatch = useDispatch();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -20,13 +24,12 @@ const Login = () => {
   var requestOptions = {
     method: "POST",
     headers: myHeaders,
-    body: raw,
-    redirect: "follow",
+    body: raw
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    fetch("http://localhost:8080/login", requestOptions)
+    await fetch("http://localhost:8080/login", requestOptions)
       .then((response) => {
         if (response.ok) {
           navigatee("/");
@@ -37,7 +40,7 @@ const Login = () => {
       })
       .then((result) => {
         console.log(result)
-        localStorage.setItem("token",result.token)
+        dispatch(loginSuccess(result))
         setSuccess(true)
       })
       .catch((error) => console.log("error", error));

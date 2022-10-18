@@ -1,8 +1,21 @@
-import { Badge, Button, Container, Form, InputGroup, Nav, Navbar } from "react-bootstrap";
+import {
+  Badge,
+  Button,
+  Container,
+  Form,
+  InputGroup,
+  Nav,
+  Navbar,
+} from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../redux/auth/authSlice";
 const Menu = () => {
+  const user = useSelector((state) => state.auth.login.currentUser);
+  const dispatch = useDispatch();
+  const navigatee = useNavigate();
   return (
     <>
       <Navbar bg="info" variant="dark" expand="lg">
@@ -42,33 +55,54 @@ const Menu = () => {
               </Nav.Link>
             </Nav>
             <Nav className="d-flex">
-            <Form className="me-4">
-              <InputGroup size="sm" className="mt-1 me-5">
-                <Form.Control style={{minWidth : "300px"}}
-                placeholder="Tìm kiếm sản phẩm.."
-                />
-                <Button variant="outline-secondary">
-                <Icon.Search size={25} />
-                </Button>
-              </InputGroup>
-            </Form>
+              <Form className="me-4">
+                <InputGroup size="sm" className="mt-1 me-5">
+                  <Form.Control
+                    style={{ minWidth: "300px" }}
+                    placeholder="Tìm kiếm sản phẩm.."
+                  />
+                  <Button variant="outline-secondary">
+                    <Icon.Search size={25} />
+                  </Button>
+                </InputGroup>
+              </Form>
               <Nav.Link as={NavLink} to="/cart">
                 <Icon.Cart className="text-light" size={30} />
                 <Badge bg="light" className="text-dark" pill>
                   14
-              </Badge>
+                </Badge>
               </Nav.Link>
               <Dropdown>
                 <Dropdown.Toggle variant="link">
+                  {user && <div className="badge fs-6">{user.fullName}</div>}
                   <Icon.PersonCircle className="text-light" size={30} />
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu variant="link">
-                  <Dropdown.Item as={NavLink} to="/login">
-                    Login
-                  </Dropdown.Item>
-                  <Dropdown.Divider />
-                  <Dropdown.Item>Register</Dropdown.Item>
+                  {user ? (
+                    <>
+                      <Dropdown.Item as={NavLink} to="/login">
+                        Tài khoản
+                      </Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Item
+                        onClick={() => {
+                          dispatch(logout());
+                          navigatee("/");
+                        }}
+                      >
+                        Đăng xuất
+                      </Dropdown.Item>
+                    </>
+                  ) : (
+                    <>
+                      <Dropdown.Item as={NavLink} to="/login">
+                        Login
+                      </Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Item>Register</Dropdown.Item>
+                    </>
+                  )}
                 </Dropdown.Menu>
               </Dropdown>
             </Nav>

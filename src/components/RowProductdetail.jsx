@@ -14,13 +14,19 @@ const RowProductdetail = ({ product, idx, deleteProduct }) => {
 
   return (
     <>
+    {console.log(product)}
       <th>{idx + 1}</th>
       <td>{product.id}</td>
       <td>{product.name}</td>
       <td>{product.price}</td>
       <td>{product.createDate}</td>
       <td>{product.image}</td>
-      <td>{product.category.name}</td>
+      <td>
+        {
+          product.category && product.category.name
+        }
+        {/* {product.category.name} */}
+        </td>
       <td>{product.available ? "Yes" : "No"}</td>
       <td>
         <Button variant="link">
